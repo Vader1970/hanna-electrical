@@ -55,7 +55,7 @@ export function Reviews() {
               <div className="flex items-center justify-between gap-3">
                 <span className="text-[13px] font-extrabold tracking-[0.12em] uppercase">{review.n}</span>
               </div>
-              <blockquote className="m-0 max-w-[28ch] text-[clamp(22px,2.1vw,31px)] leading-[1.32] font-semibold tracking-[-0.015em] text-neutral-600 text-pretty">
+              <blockquote className="m-0 max-w-[28ch] text-[clamp(22px,2.1vw,31px)] leading-[1.32] font-semibold tracking-[-0.015em] text-neutral-700 text-pretty">
                 “{review.quote}”
               </blockquote>
               <figcaption className="mt-auto flex items-center gap-4 border-t-2 border-divider pt-[22px]">

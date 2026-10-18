@@ -100,39 +100,45 @@ export function WorkGallery() {
       </div>
 
       <Container className="mt-[clamp(28px,3vw,44px)]">
-        <div className="flex items-center gap-5 border-t-2 border-[color-mix(in_srgb,white_14%,transparent)] pt-5">
+        <div className="grid grid-cols-[1fr_auto] items-center gap-x-5 gap-y-2 border-t-2 border-[color-mix(in_srgb,white_14%,transparent)] pt-5 min-[540px]:grid-cols-[auto_minmax(0,1fr)_auto]">
           <span className="min-w-[62px] text-[15px] font-extrabold tabular-nums">
             {pad2(display + 1)} / {pad2(GALLERY.length)}
           </span>
-          <div className="flex min-w-0 flex-1 items-center gap-1">
-            {GALLERY.map((item, itemIndex) => (
-              <button
-                key={item.caption}
-                type="button"
-                onClick={() => scrollToIndex(itemIndex)}
-                aria-label={`Go to photo ${itemIndex + 1}`}
-                className="flex h-7 max-w-14 flex-1 cursor-pointer items-center border-0 bg-transparent p-0"
-              >
-                <span
-                  className={`block h-[3px] w-full transition-colors duration-300 ${itemIndex === display ? "bg-accent" : "bg-[color-mix(in_srgb,white_22%,transparent)]"}`}
-                />
-              </button>
-            ))}
+          <div className="col-span-2 flex h-11 min-w-0 items-center gap-1 min-[540px]:col-span-1 min-[540px]:col-start-2 min-[540px]:row-start-1">
+            {GALLERY.map((item, itemIndex) => {
+              const current = itemIndex === display;
+              return (
+                <button
+                  key={item.caption}
+                  type="button"
+                  onClick={() => scrollToIndex(itemIndex)}
+                  aria-label={`Go to photo ${itemIndex + 1}`}
+                  aria-current={current ? "true" : undefined}
+                  className="flex h-11 min-w-6 max-w-14 flex-1 cursor-pointer items-center border-0 bg-transparent p-0"
+                >
+                  <span
+                    className={`block h-[3px] w-full transition-colors duration-300 ${current ? "bg-accent" : "bg-[color-mix(in_srgb,white_22%,transparent)]"}`}
+                  />
+                </button>
+              );
+            })}
           </div>
-          <PagerButton
-            direction="prev"
-            tone="prev-light"
-            label="Previous photo"
-            disabled={state.start}
-            onClick={() => scrollToIndex(state.i - 1)}
-          />
-          <PagerButton
-            direction="next"
-            tone="next"
-            label="Next photo"
-            disabled={state.end}
-            onClick={() => scrollToIndex(state.i + 1)}
-          />
+          <div className="col-start-2 row-start-1 flex items-center gap-5 min-[540px]:col-start-3">
+            <PagerButton
+              direction="prev"
+              tone="prev-light"
+              label="Previous photo"
+              disabled={state.start}
+              onClick={() => scrollToIndex(state.i - 1)}
+            />
+            <PagerButton
+              direction="next"
+              tone="next"
+              label="Next photo"
+              disabled={state.end}
+              onClick={() => scrollToIndex(state.i + 1)}
+            />
+          </div>
         </div>
       </Container>
 

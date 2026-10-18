@@ -9,13 +9,13 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative h-[92vh] max-h-[1100px] min-h-[620px] overflow-hidden bg-neutral-900 text-white"
+      className="he-hero relative h-[92vh] max-h-[1100px] min-h-[620px] overflow-hidden bg-neutral-900 text-white"
     >
       <HeroVideo />
       <div className="he-hero-shade pointer-events-none absolute inset-0" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[200px] bg-[linear-gradient(180deg,color-mix(in_srgb,#17191c_60%,transparent),transparent)]" />
 
-      <div className="relative mx-auto flex h-full max-w-[1440px] flex-col justify-end px-[var(--edge)] pb-[clamp(116px,15vh,168px)]">
+      <div className="he-hero-copy relative mx-auto flex h-full max-w-[1440px] flex-col justify-end px-[var(--edge)] pb-[clamp(116px,15vh,168px)]">
         <Kicker tone="white">Christchurch Electrical Services</Kicker>
         <h1 className="m-[24px_0_0_-0.055em] text-[clamp(46px,9.2vw,140px)] leading-[0.93] font-extrabold tracking-[-0.04em] text-balance text-white">
           <span className="block">
