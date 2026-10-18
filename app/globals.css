@@ -265,6 +265,33 @@ body {
   }
 }
 
+/* Phones only. The header is fixed, so it covers the top of the hero, and the
+   copy is packed to the bottom of a viewport-height box. On a short screen that
+   box falls to its 620px floor and the copy plus bottom padding use almost all
+   of it, which pulls the tagline up under the header. DevTools at a tall mobile
+   height never hits that floor, so the same rules look fine there.
+   Reserve the header (4rem bar + 2px border) and a 56px gap, and let the section
+   grow past 92svh when the copy needs it. 92svh tracks the visible viewport on
+   Android Chrome; 92vh is the fallback. Tall screens keep the existing bottom
+   alignment, because this padding only occupies space that was already empty. */
+@media (max-width: 767px) {
+  .he-hero {
+    display: grid;
+    height: auto;
+    max-height: none;
+    min-height: max(92vh, 620px);
+    min-height: max(92svh, 620px);
+  }
+
+  .he-hero-copy {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 100%;
+    padding-top: calc(4rem + 2px + 3.5rem);
+  }
+}
+
 @media (min-width: 640px) {
   .he-swipe-hint {
     display: none;
